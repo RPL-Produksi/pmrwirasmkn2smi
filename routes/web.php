@@ -10,6 +10,6 @@ Route::controller(HomeController::class)->group(function() {
     Route::get('/', 'index')->name('home');
 });
 
-Route::controller(BlogsController::class)->group(function() {
-    Route::get('/blogs', 'index')->name('blogs.index');
-});
+// Route::controller(BlogsController::class)->group(function() {
+//     Route::get('/blogs', 'index')->name('blogs.index');
+// });
