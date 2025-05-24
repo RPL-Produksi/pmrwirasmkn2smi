@@ -6,10 +6,11 @@ use Illuminate\Support\Facades\Route;
 
 
 
-Route::controller(HomeController::class)->group(function() {
+Route::controller(HomeController::class)->group(function () {
     Route::get('/', 'index')->name('home');
 });
 
-Route::controller(BlogsController::class)->group(function() {
+Route::controller(BlogsController::class)->group(function () {
     Route::get('/blogs', 'index')->name('blogs.index');
+    Route::get('/blog/{slug}', 'detail')->name('blogs.detail');
 });
