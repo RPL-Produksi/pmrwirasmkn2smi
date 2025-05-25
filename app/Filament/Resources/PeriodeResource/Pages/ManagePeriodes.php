@@ -10,6 +10,8 @@ class ManagePeriodes extends ManageRecords
 {
     protected static string $resource = PeriodeResource::class;
 
+    protected static null|string $title = 'Purnawira';
+
     protected function getHeaderActions(): array
     {
         return [

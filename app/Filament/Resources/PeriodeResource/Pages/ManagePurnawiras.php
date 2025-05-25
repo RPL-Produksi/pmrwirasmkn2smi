@@ -56,6 +56,9 @@ class ManagePurnawiras extends Page implements HasTable
                     FileUpload::make('image')
                         ->label('Foto')
                         ->image()
+                        ->disk('public')
+                        ->directory('purnawira')
+                        ->imageCropAspectRatio('1:1')
                         ->required(),
                 ])
                 ->action(function (array $data) {
@@ -66,7 +69,7 @@ class ManagePurnawiras extends Page implements HasTable
 
     protected function getTableQuery(): Builder|Relation|null
     {
-        return Purnawira::query()->where('periode_id', $this->record->id)->with('periode');
+        return Purnawira::query()->orderBy('created_at', 'asc')->where('periode_id', $this->record->id)->with('periode');
     }
 
     protected function getTableColumns(): array
@@ -87,17 +90,34 @@ class ManagePurnawiras extends Page implements HasTable
                 ->searchable()
                 ->toggleable(),
             TextColumn::make('quotes')
-                ->label('Quotes')
-                ->sortable()
-                ->searchable()
-                ->toggleable(),
+                ->label('Quotes'),
         ];
     }
 
     protected function getTableActions(): array
     {
         return [
-            EditAction::make(),
+            EditAction::make('edit')
+                ->label('Edit Alumni')
+                ->form([
+                    TextInput::make('name')
+                        ->label('Nama')
+                        ->required(),
+                    TextInput::make('jabatan')
+                        ->label('Jabatan')
+                        ->required(),
+                    Textarea::make('quotes')
+                        ->label('Quotes'),
+                    FileUpload::make('image')
+                        ->label('Foto')
+                        ->image()
+                        ->disk('public')
+                        ->directory('purnawira')
+                        ->imageCropAspectRatio('1:1'),
+                ])
+                ->action(function (Purnawira $record, array $data) {
+                    $record->update($data);
+                }),
             DeleteAction::make(),
         ];
     }

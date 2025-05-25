@@ -71,10 +71,11 @@
                                     role="menu" aria-orientation="vertical"
                                     aria-labelledby="hs-header-base-mega-menu-fullwidth">
                                     <div class="md:mx-6 lg:mx-8 md:bg-white md:rounded-lg md:shadow-md">
-                                        <div class="py-1 md:p-2 md:grid md:grid-cols-2 lg:grid-cols-3 gap-4 mt-3">
+                                        <div
+                                            class="py-1 md:p-2 md:grid md:grid-cols-2 lg:grid-cols-3 gap-4 mt-0 md:mt-3">
                                             <div class="flex flex-col">
                                                 <a class="p-3 flex gap-x-4 hover:bg-gray-100 focus:outline-hidden focus:bg-gray-100 rounded-lg"
-                                                    href="#">
+                                                    href="{{ route('profil.index') }}#sejarah">
                                                     <i
                                                         class="fa-regular fa-clock-rotate-left shrink-0 size-4 mt-1 text-gray-800"></i>
                                                     <div class="grow">
@@ -84,7 +85,7 @@
                                                 </a>
 
                                                 <a class="p-3 flex gap-x-4 hover:bg-gray-100 focus:outline-hidden focus:bg-gray-100 rounded-lg "
-                                                    href="#">
+                                                    href="{{ route('profil.index') }}#lambang">
                                                     <i
                                                         class="fa-regular fa-nfc-symbol shrink-0 size-4 mt-1 text-gray-800"></i>
                                                     <div class="grow">
@@ -94,7 +95,7 @@
                                                 </a>
 
                                                 <a class="p-3 flex gap-x-4 hover:bg-gray-100 focus:outline-hidden focus:bg-gray-100 rounded-lg "
-                                                    href="#">
+                                                    href="{{ route('profil.index') }}#struktur">
                                                     <i
                                                         class="fa-regular fa-table-tree shrink-0 size-4 mt-1 text-gray-800"></i>
                                                     <div class="grow">
@@ -106,7 +107,7 @@
 
                                             <div class="flex flex-col">
                                                 <a class="p-3 flex gap-x-4 hover:bg-gray-100 focus:outline-hidden focus:bg-gray-100 rounded-lg"
-                                                    href="#">
+                                                    href="{{ route('visi-misi.index') }}">
                                                     <i
                                                         class="fa-regular fa-rectangles-mixed shrink-0 size-4 mt-1 text-gray-800"></i>
                                                     <div class="grow">
@@ -116,7 +117,7 @@
                                                 </a>
 
                                                 <a class="p-3 flex gap-x-4 hover:bg-gray-100 focus:outline-hidden focus:bg-gray-100 rounded-lg"
-                                                    href="#">
+                                                    href="{{ route('informasi.index') }}">
                                                     <i
                                                         class="fa-regular fa-circle-info shrink-0 size-4 mt-1 text-gray-800"></i>
                                                     <div class="grow">
@@ -162,14 +163,13 @@
                             </div>
 
                             <a class="p-2 flex items-center text-sm text-gray-800 hover:bg-gray-100 rounded-lg focus:outline-hidden focus:bg-gray-100 hover:text-yellow-600 transition-all duration-300"
-                                href="#">
+                                href="{{ route('purnawira.index') }}">
                                 <i class="fa-regular fa-users shrink-0 size-4 me-3 md:me-2 block md:hidden"></i>
-
                                 Purnawira
                             </a>
 
                             <a class="p-2 flex items-center text-sm text-gray-800 hover:bg-gray-100 rounded-lg focus:outline-hidden focus:bg-gray-100 hover:text-yellow-600 transition-all duration-300"
-                                href="#">
+                                href="{{ route('informasi.index') }}#pengumuman">
                                 <i class="fa-regular fa-bullhorn shrink-0 size-4 me-3 md:me-2 block md:hidden"></i>
                                 Pengumuman
                             </a>
@@ -188,7 +188,7 @@
 
                     <div class=" flex flex-wrap items-center gap-x-1.5">
                         <a class="py-2 px-2.5 flex justify-center items-center font-medium text-sm rounded-lg bg-yellow-600 text-white hover:bg-yellow-700 w-full md:w-auto transition-all duration-300"
-                            href="#">
+                            href="{{ route('filament.admin.auth.login') }}">
                             Login
                         </a>
                     </div>
