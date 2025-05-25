@@ -117,7 +117,8 @@
 
                                                 <a class="p-3 flex gap-x-4 hover:bg-gray-100 focus:outline-hidden focus:bg-gray-100 rounded-lg"
                                                     href="#">
-                                                    <i class="fa-regular fa-circle-info shrink-0 size-4 mt-1 text-gray-800"></i>
+                                                    <i
+                                                        class="fa-regular fa-circle-info shrink-0 size-4 mt-1 text-gray-800"></i>
                                                     <div class="grow">
                                                         <p class="font-medium text-sm text-gray-800">
                                                             Informasi</p>
@@ -174,7 +175,7 @@
                             </a>
 
                             <a class="p-2 flex items-center text-sm text-gray-800 hover:bg-gray-100 rounded-lg focus:outline-hidden focus:bg-gray-100 hover:text-yellow-600 transition-all duration-300"
-                                href="{{ route('blogs.index') }}">
+                                href="{{ route('filamentblog.post.index') }}" target="_blank">
                                 <i class="fa-regular fa-newspaper shrink-0 size-4 me-3 md:me-2 block md:hidden"></i>
                                 Blog
                             </a>
