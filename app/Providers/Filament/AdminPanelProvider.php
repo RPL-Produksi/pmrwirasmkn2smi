@@ -59,7 +59,6 @@ class AdminPanelProvider extends PanelProvider
                 Blog::make(),
             ])->profile(EditProfile::class)
             ->favicon(asset('assets/img/favicon.png'))
-            ->brandName('PMR Wira')
-            ->userCanAccessPanel(fn ($user) => true);
+            ->brandName('PMR Wira');
     }
 }
