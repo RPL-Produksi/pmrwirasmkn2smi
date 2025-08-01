@@ -1,5 +1,8 @@
 <?php
 
+use App\Models\Administrator;
+use App\Models\Pengurus;
+
 return [
 
     /*
@@ -40,6 +43,14 @@ return [
             'driver' => 'session',
             'provider' => 'users',
         ],
+        'admin' => [
+            'driver' => 'session',
+            'provider' => 'admins',
+        ],
+        'pengurus' => [
+            'driver' => 'session',
+            'provider' => 'penguruses',
+        ],
     ],
 
     /*
@@ -65,10 +76,15 @@ return [
             'model' => env('AUTH_MODEL', App\Models\User::class),
         ],
 
-        // 'users' => [
-        //     'driver' => 'database',
-        //     'table' => 'users',
-        // ],
+        'admins' => [
+            'driver' => 'eloquent',
+            'model' => Administrator::class,
+        ],
+
+        'penguruses' => [
+            'driver' => 'eloquent',
+            'model' => Pengurus::class,
+        ],
     ],
 
     /*
