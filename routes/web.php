@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\BidangController;
 use App\Http\Controllers\Guest\GuestAuthController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\InformasiController;
@@ -23,6 +24,10 @@ Route::controller(PurnawiraController::class)->group(function () {
 
 Route::controller(ProfilController::class)->group(function () {
     Route::get('/profil', 'index')->name('profil.index');
+});
+
+Route::controller(BidangController::class)->group(function () {
+    Route::get('/bidang-bidang', 'index')->name('bidang.index');
 });
 
 Route::controller(VisiMisiController::class)->group(function () {

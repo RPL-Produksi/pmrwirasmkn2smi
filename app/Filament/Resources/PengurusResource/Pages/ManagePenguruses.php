@@ -10,6 +10,8 @@ class ManagePenguruses extends ManageRecords
 {
     protected static string $resource = PengurusResource::class;
 
+    protected static null|string $title = 'Pengurus';
+
     protected function getHeaderActions(): array
     {
         return [

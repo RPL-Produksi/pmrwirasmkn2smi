@@ -107,6 +107,16 @@
 
                                             <div class="flex flex-col">
                                                 <a class="p-3 flex gap-x-4 hover:bg-gray-100 focus:outline-hidden focus:bg-gray-100 rounded-lg"
+                                                    href="{{ route('bidang.index') }}">
+                                                    <i
+                                                        class="fa-regular fa-dumbbell shrink-0 size-4 mt-1 text-gray-800"></i>
+                                                    <div class="grow">
+                                                        <p class="font-medium text-sm text-gray-80">
+                                                            Bidang <sup>2</sup></p>
+                                                    </div>
+                                                </a>
+
+                                                <a class="p-3 flex gap-x-4 hover:bg-gray-100 focus:outline-hidden focus:bg-gray-100 rounded-lg"
                                                     href="{{ route('visi-misi.index') }}">
                                                     <i
                                                         class="fa-regular fa-rectangles-mixed shrink-0 size-4 mt-1 text-gray-800"></i>

@@ -7,7 +7,7 @@
             <h3 class="text-2xl font-semibold text-red-700 mb-6">Detail Kontak</h3>
             <div class="space-y-4 text-gray-700">
                 <div>
-                    <h4 class="font-semibold text-lg">Alamat Sekretariat:</h4>
+                    <h4 class="font-semibold text-lg">Alamat Organisasi:</h4>
                     <p>SMK Negeri 2 Sukabumi</p>
                     <p>Jl. Pelabuhan II, Cipoho, Kec. Citamiang, Kota Sukabumi, Jawa Barat 43142</p>
                     <p>Ruang PMR (RUBES)</p>
@@ -17,12 +17,12 @@
                     <p><a href="mailto:pmrwirasmkn2sukabumi@gmail.com"
                             class="text-yellow-600 hover:text-yellow-700">pmrwirasmkn2sukabumi@gmail.com</a></p>
                 </div>
-                <div>
+                {{-- <div>
                     <h4 class="font-semibold text-lg">Narahubung (Ketua/Sekretaris):</h4>
                     <p>Regita Ananda Pasha (Ketua Umum) - <span class="text-yellow-600">+62 857-2080-5174</span></p>
                     <p>Natasya Dzuniar (Sekretaris 1) - <span class="text-yellow-600">+62 858-6453-2991</span></p>
                     <p>Istiani Nur (Sekretaris 2) - <span class="text-yellow-600">+62 896-5252-8907</span></p>
-                </div>
+                </div> --}}
                 <div>
                     <h4 class="font-semibold text-lg">Media Sosial:</h4>
                     <div class="flex space-x-4 mt-2">
