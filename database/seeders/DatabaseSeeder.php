@@ -21,7 +21,7 @@ class DatabaseSeeder extends Seeder
         //     'email' => 'test@example.com',
         // ]);
 
-        Administrator::create([
+        Administrator::firstOrCreate(['email' => env('ADMIN_EMAIL')], [
             'name' => env('ADMIN_NAME'),
             'email' => env('ADMIN_EMAIL'),
             'password' => bcrypt(env('ADMIN_PASSWORD')),

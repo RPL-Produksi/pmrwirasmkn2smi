@@ -26,6 +26,8 @@ class PengurusPanelProvider extends PanelProvider
         return $panel
             ->id('pengurus')
             ->path('pengurus')
+            ->login()
+            ->passwordReset()
             ->colors([
                 'primary' => Color::Amber,
             ])
@@ -55,6 +57,7 @@ class PengurusPanelProvider extends PanelProvider
             ])->authGuard('pengurus')
             ->profile(EditProfile::class)
             ->favicon(asset('assets/img/favicon.png'))
-            ->brandName('PMR Wira | Pengurus');
+            ->brandName('PMR Wira | Pengurus')
+            ->authPasswordBroker('pengurus');
     }
 }

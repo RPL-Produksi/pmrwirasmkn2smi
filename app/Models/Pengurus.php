@@ -5,6 +5,7 @@ namespace App\Models;
 use Filament\Models\Contracts\FilamentUser;
 use Filament\Panel;
 use Firefly\FilamentBlog\Traits\HasBlog;
+use Illuminate\Auth\Passwords\CanResetPassword;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -13,7 +14,7 @@ use Illuminate\Notifications\Notifiable;
 class Pengurus extends Authenticatable implements FilamentUser
 {
     /** @use HasFactory<\Database\Factories\UserFactory> */
-    use HasFactory, Notifiable, HasBlog;
+    use HasFactory, Notifiable, HasBlog, CanResetPassword;
 
     /**
      * The attributes that are mass assignable.
@@ -23,6 +24,7 @@ class Pengurus extends Authenticatable implements FilamentUser
     protected $fillable = [
         'name',
         'email',
+        'profile_photo_path',
         'password',
     ];
 

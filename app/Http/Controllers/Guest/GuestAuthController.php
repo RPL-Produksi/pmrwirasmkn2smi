@@ -11,7 +11,7 @@ class GuestAuthController extends Controller
 {
     public function showLogin()
     {
-        return view('auth.login');
+        return view('landing.guest.login');
     }
 
     public function login(Request $request)
@@ -33,7 +33,7 @@ class GuestAuthController extends Controller
 
     public function showRegister()
     {
-        return view('auth.register');
+        return view('landing.guest.register');
     }
 
     public function register(Request $request)
