@@ -1,14 +1,16 @@
 <?php
 
-namespace App\Filament\Resources\PeriodeResource\Pages;
+namespace App\Filament\Resources\BidangResource\Pages;
 
-use App\Filament\Resources\PeriodeResource;
-use App\Models\Purnawira;
+use App\Filament\Resources\BidangResource;
+use App\Models\BidangAnggota;
+use Filament\Resources\Pages\Concerns\InteractsWithRecord;
+use Filament\Actions\CreateAction;
 use Filament\Forms\Components\FileUpload;
 use Filament\Forms\Components\Textarea;
 use Filament\Forms\Components\TextInput;
-use Filament\Resources\Pages\Concerns\InteractsWithRecord;
 use Filament\Resources\Pages\Page;
+use Filament\Tables\Actions\BulkActionGroup;
 use Filament\Tables\Actions\DeleteAction;
 use Filament\Tables\Actions\DeleteBulkAction;
 use Filament\Tables\Actions\EditAction;
@@ -20,56 +22,70 @@ use Illuminate\Contracts\Support\Htmlable;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Relations\Relation;
 
-class ManagePurnawiras extends Page implements HasTable
+class ManageBidangAnggota extends Page implements HasTable
 {
     use InteractsWithRecord, InteractsWithTable;
 
-    protected static string $resource = PeriodeResource::class;
+    protected static string $resource = BidangResource::class;
 
-    protected static string $view = 'filament.resources.periode-resource.pages.manage-purnawiras';
+    protected static string $view = 'filament.resources.bidang-resource.pages.manage-bidang-anggota';
 
     public function getTitle(): string|Htmlable
     {
-        return 'Manage Alumni - ' . $this->record->tahun;
+        return 'Manage Anggota - ' . $this->record->name;
     }
 
     public function mount(int | string $record): void
     {
-        $this->record = $this->resolveRecord($record);
+        $this->record =  $this->resolveRecord($record);
     }
 
     protected function getHeaderActions(): array
     {
         return [
-            \Filament\Actions\CreateAction::make()
-                ->label('New alumni')
-                ->modalHeading('Create Alumni')
+            CreateAction::make()
+                ->label('New Anggota')
+                ->modalHeading('Create Anggota')
                 ->form([
                     TextInput::make('name')
                         ->label('Nama')
                         ->required(),
-                    TextInput::make('jabatan')
-                        ->label('Jabatan')
-                        ->required(),
+                    TextInput::make('role')
+                        ->helperText('Contoh: Pelaku A (Optional)')
+                        ->label('Role'),
                     Textarea::make('quotes')
                         ->label('Quotes'),
                     FileUpload::make('image')
                         ->label('Foto')
                         ->image()
                         ->disk('public')
-                        ->directory('purnawira')
+                        ->directory('bidang-anggota')
                         ->imageCropAspectRatio('1:1')
                         ->required(),
-                ])
-                ->action(function (array $data) {
-                    Purnawira::create(array_merge($data, ['periode_id' => $this->record->id]));
+                ])->action(function (array $data) {
+                    BidangAnggota::create(array_merge($data, ['bidang_id' => $this->record->id]));
+                }),
+            CreateAction::make()
+                ->label('Dokumentasi')
+                ->icon('heroicon-o-document-plus')
+                ->modalHeading('Add Dokumentasi')
+                ->form([
+                    FileUpload::make('storage_path')
+                        ->label('Dokumentasi')
+                        ->image()
+                        ->disk('public')
+                        ->directory('bidang-attachments')
+                        ->multiple()
+                        ->required(),
+                ])->action(function (array $data) {
+                    $this->record->attachments()->createMany(array_map(fn($path) => ['storage_path' => $path], $data['storage_path']));
                 }),
         ];
     }
 
     protected function getTableQuery(): Builder|Relation|null
     {
-        return Purnawira::query()->orderBy('created_at', 'asc')->where('periode_id', $this->record->id)->with('periode');
+        return BidangAnggota::query()->where('bidang_id', $this->record->id);
     }
 
     protected function getTableColumns(): array
@@ -84,11 +100,8 @@ class ManagePurnawiras extends Page implements HasTable
                 ->sortable()
                 ->searchable()
                 ->toggleable(),
-            TextColumn::make('jabatan')
-                ->label('Jabatan')
-                ->sortable()
-                ->searchable()
-                ->toggleable(),
+            TextColumn::make('role')
+                ->label('Role'),
             TextColumn::make('quotes')
                 ->label('Quotes'),
         ];
@@ -98,25 +111,25 @@ class ManagePurnawiras extends Page implements HasTable
     {
         return [
             EditAction::make('edit')
-                ->label('Edit Alumni')
+                ->label('Edit Anggota')
                 ->form([
                     TextInput::make('name')
                         ->label('Nama')
                         ->required(),
-                    TextInput::make('jabatan')
-                        ->label('Jabatan')
-                        ->required(),
+                    TextInput::make('role')
+                        ->helperText('Contoh: Pelaku A (Optional)')
+                        ->label('Role'),
                     Textarea::make('quotes')
                         ->label('Quotes'),
                     FileUpload::make('image')
                         ->label('Foto')
                         ->image()
                         ->disk('public')
-                        ->directory('purnawira')
-                        ->imageCropAspectRatio('1:1'),
-                ])
-                ->action(function (Purnawira $record, array $data) {
-                    $record->update($data);
+                        ->directory('bidang-anggota')
+                        ->imageCropAspectRatio('1:1')
+                        ->required(),
+                ])->action(function (array $data) {
+                    BidangAnggota::where('id', $this->record->id)->update($data);
                 }),
             DeleteAction::make(),
         ];
@@ -125,9 +138,9 @@ class ManagePurnawiras extends Page implements HasTable
     protected function getTableBulkActions(): array
     {
         return [
-            \Filament\Tables\Actions\BulkActionGroup::make([
-                DeleteBulkAction::make(),
-            ]),
+            BulkActionGroup::make([
+                DeleteBulkAction::make()
+            ])
         ];
     }
 }
