@@ -103,6 +103,16 @@
                                                             Struktur Organisasi</p>
                                                     </div>
                                                 </a>
+
+                                                <a class="p-3 flex gap-x-4 hover:bg-gray-100 focus:outline-hidden focus:bg-gray-100 rounded-lg "
+                                                    href="{{ route('profil.index') }}#struktur">
+                                                    <i
+                                                        class="fa-regular fa-dumbbell shrink-0 size-4 mt-1 text-gray-800"></i>
+                                                    <div class="grow">
+                                                        <p class="font-medium text-sm text-gray-800">
+                                                            Bidang-Bidang</p>
+                                                    </div>
+                                                </a>
                                             </div>
 
                                             <div class="flex flex-col">
@@ -113,6 +123,16 @@
                                                     <div class="grow">
                                                         <p class="font-medium text-sm text-gray-80">
                                                             Visi Misi</p>
+                                                    </div>
+                                                </a>
+
+                                                <a class="p-3 flex gap-x-4 hover:bg-gray-100 focus:outline-hidden focus:bg-gray-100 rounded-lg "
+                                                    href="{{ route('profil.index') }}#struktur">
+                                                    <i
+                                                        class="fa-regular fa-trophy-star shrink-0 size-4 mt-1 text-gray-800"></i>
+                                                    <div class="grow">
+                                                        <p class="font-medium text-sm text-gray-800">
+                                                            Prestasi</p>
                                                     </div>
                                                 </a>
 
@@ -135,7 +155,8 @@
                                                 <a class="p-3 flex gap-x-5 items-center rounded-xl hover:bg-gray-100 focus:outline-hidden focus:bg-gray-100 hover:text-yellow-600"
                                                     href="#">
                                                     <img class="size-32 rounded-lg"
-                                                        src="{{ asset('assets/img/logo_glora.png') }}" alt="Avatar">
+                                                        src="{{ asset('assets/img/logo_glora.png') }}"
+                                                        alt="Avatar">
                                                     <div class="grow">
                                                         <p class="text-sm text-gray-800">
                                                             Glora (Gebyar Lomba PMR) SMK Negeri 2 Sukabumi adalah ajang
