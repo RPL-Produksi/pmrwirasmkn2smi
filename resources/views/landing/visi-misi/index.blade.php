@@ -6,6 +6,16 @@
 @section('content')
     @include('template.navbar')
 
+    <section class="relative bg-gradient-to-r from-emerald-500 via-teal-500 to-cyan-500 text-white py-20">
+        <div class="container mx-auto px-6 text-center">
+            <h1 class="text-4xl md:text-5xl font-bold mb-4">Visi & Misi</h1>
+            <p class="text-lg md:text-xl max-w-3xl mx-auto">
+                Kepemimpinan yang membawa semangat baru, penuh dedikasi, dan berorientasi pada pengembangan potensi anggota.
+            </p>
+        </div>
+    </section>
+
+
     <section id="visimisi" class="bg-[#f0f4f8] py-16">
         <div class="container mx-auto px-6">
             <div class="text-center mb-12">

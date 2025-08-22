@@ -7,6 +7,7 @@ use App\Filament\Resources\PrestasiResource\RelationManagers;
 use App\Models\Prestasi;
 use Filament\Forms;
 use Filament\Forms\Components\FileUpload;
+use Filament\Forms\Components\Hidden;
 use Filament\Forms\Components\RichEditor;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Form;
@@ -15,6 +16,7 @@ use Filament\Tables;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
+use Illuminate\Support\Str;
 
 class PrestasiResource extends Resource
 {
@@ -35,7 +37,12 @@ class PrestasiResource extends Resource
                     ->required()
                     ->maxLength(255)
                     ->columnSpanFull()
-                    ->placeholder('Masukkan nama event'),
+                    ->placeholder('Masukkan nama event')
+                    ->afterStateUpdated(function ($state, $set) {
+                        $set('slug', Str::slug($state));
+                    }),
+                Hidden::make('slug')
+                    ->default(fn($get) => Str::slug($get('event') ?? '')),
                 RichEditor::make('description')
                     ->label('Deskripsi')
                     ->required()
@@ -49,18 +56,22 @@ class PrestasiResource extends Resource
                     ->columnSpanFull()
                     ->afterStateHydrated(function ($component, $state, $record) {
                         if ($record) {
-                            $component->state($record->attachments->pluck('path')->toArray());
+                            $component->state(
+                                $record->attachments->pluck('storage_path')->toArray()
+                            );
                         }
                     })
                     ->dehydrateStateUsing(fn($state) => $state ?? [])
                     ->saveRelationshipsUsing(function ($state, $record) {
                         if ($record) {
+                            // hapus data lama
                             $record->attachments()->delete();
 
-                            foreach ($state as $file) {
+                            // simpan hanya yang valid (bukan null/kosong)
+                            foreach (array_filter($state) as $file) {
                                 $record->attachments()->create([
-                                    'prestasi_id' => $record->id,
-                                    'storage_path' => $file,
+                                    'prestasi_id'   => $record->id,
+                                    'storage_path'  => $file,
                                 ]);
                             }
                         }
