@@ -9,6 +9,7 @@ class Prestasi extends Model
     protected $fillable = [
         'event',
         'description',
+        'slug',
     ];
 
     public function attachments()

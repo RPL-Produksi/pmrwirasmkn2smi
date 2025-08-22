@@ -34,7 +34,8 @@ class PeriodeResource extends Resource
                     ->label('Tahun')
                     ->required()
                     ->columnSpanFull()
-                    ->placeholder('Masukkan tahun periode'),
+                    ->placeholder('Masukkan tahun periode')
+                    ->helperText('Contoh: 2024-2025'),
             ]);
     }
 

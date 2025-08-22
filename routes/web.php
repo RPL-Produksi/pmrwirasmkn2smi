@@ -3,6 +3,7 @@
 use App\Http\Controllers\Guest\GuestAuthController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\InformasiController;
+use App\Http\Controllers\PrestasiController;
 use App\Http\Controllers\ProfilController;
 use App\Http\Controllers\PurnawiraController;
 use App\Http\Controllers\VisiMisiController;
@@ -31,6 +32,11 @@ Route::controller(VisiMisiController::class)->group(function () {
 
 Route::controller(InformasiController::class)->group(function () {
     Route::get('/informasi', 'index')->name('informasi.index');
+});
+
+Route::controller(PrestasiController::class)->group(function () {
+    Route::get('/prestasi', 'index')->name('prestasi.index');
+    Route::get('/prestasi/{slug}', 'show')->name('prestasi.show');
 });
 
 
