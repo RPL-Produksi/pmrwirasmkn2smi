@@ -6,6 +6,16 @@
 @section('content')
     @include('template.navbar')
 
+    <section class="relative bg-gradient-to-r from-slate-900 via-blue-900 to-indigo-800 text-white py-20">
+        <div class="container mx-auto px-6 text-center">
+            <h1 class="text-4xl md:text-5xl font-bold mb-4">Purnawira PMR Wira SMKN 2 Sukabumi</h1>
+            <p class="text-lg md:text-xl max-w-2xl mx-auto">
+                Ikatan alumni PMR Wira yang terus menjalin silaturahmi, berbagi pengalaman,
+                dan memberikan kontribusi nyata bagi generasi penerus.
+            </p>
+        </div>
+    </section>  
+
     <div class="max-w-[85rem] px-4 py-10 sm:px-6 lg:px-8 lg:py-14 mx-auto">
         <div class="max-w-2xl mx-auto text-center mb-10 lg:mb-14">
             <h2 class="text-2xl font-bold md:text-4xl md:leading-tight">Periode Purnawira</h2>

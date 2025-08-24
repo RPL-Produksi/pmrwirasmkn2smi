@@ -7,6 +7,8 @@ use App\Filament\Resources\BidangResource\RelationManagers;
 use App\Models\Bidang;
 use Filament\Forms;
 use Filament\Forms\Components\FileUpload;
+use Filament\Forms\Components\Hidden;
+use Filament\Forms\Components\Textarea;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
@@ -16,6 +18,7 @@ use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
+use Illuminate\Support\Str;
 
 class BidangResource extends Resource
 {
@@ -34,7 +37,19 @@ class BidangResource extends Resource
                 TextInput::make('name')->label('Nama Bidang')
                     ->required()
                     ->maxLength(255)
+                    ->columnSpanFull()
+                    ->afterStateUpdated(function ($state, $set) {
+                        $set('slug', Str::slug($state));
+                    }),
+
+                Hidden::make('slug')
+                    ->default(fn($get) => Str::slug($get('name') ?? '')),
+
+                Textarea::make('description')->label('Deskripsi Bidang')
+                    ->helperText('Deskripsi singkat tentang bidang ini (Optional)')
+                    ->maxLength(1000)
                     ->columnSpanFull(),
+
                 FileUpload::make('cover')
                     ->helperText('Max: 2MB')
                     ->label('Cover')

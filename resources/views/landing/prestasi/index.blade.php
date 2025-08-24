@@ -21,7 +21,7 @@
             {{-- <h1 class="text-3xl font-bold text-gray-800 mb-8">Prestasi</h1> --}}
 
             <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
-                @foreach ($prestasis as $item)
+                @forelse ($prestasis as $item)
                     <div
                         class="group bg-white rounded-2xl shadow-md hover:shadow-xl transition duration-300 overflow-hidden border border-gray-100">
                         <div class="relative">
@@ -59,7 +59,13 @@
                             </div>
                         </div>
                     </div>
-                @endforeach
+                @empty
+                    <div class="col-span-full">
+                        <div class="bg-gray-100 rounded-[8px] p-[30px] shadow-inner text-center">
+                            <p class="text-gray-600 text-lg">Belum data prestasi.</p>
+                        </div>
+                    </div>
+                @endforelse
             </div>
         </div>
     </section>

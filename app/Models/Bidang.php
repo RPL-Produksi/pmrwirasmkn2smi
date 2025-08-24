@@ -9,6 +9,8 @@ class Bidang extends Model
     protected $fillable = [
         'name',
         'cover',
+        'description',
+        'slug'
     ];
 
     public function anggota()

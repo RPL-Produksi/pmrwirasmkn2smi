@@ -117,7 +117,7 @@
                                                 </a>
 
                                                 <a class="p-3 flex gap-x-4 hover:bg-gray-100 focus:outline-hidden focus:bg-gray-100 rounded-lg "
-                                                    href="{{ route('profil.index') }}#struktur">
+                                                    href="{{ route('bidang.index') }}">
                                                     <i
                                                         class="fa-regular fa-dumbbell shrink-0 size-4 mt-1 text-gray-800"></i>
                                                     <div class="grow">

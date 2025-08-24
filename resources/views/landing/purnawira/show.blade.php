@@ -6,16 +6,23 @@
 @section('content')
     @include('template.navbar')
 
-    <div class="max-w-[85rem] px-4 py-10 sm:px-6 lg:px-8 lg:py-14 mx-auto">
-        <div class="max-w-2xl mx-auto text-center mb-10 lg:mb-14">
-            <h2 class="font-bold text-2xl md:text-4xl leading-tight text-center">
-                Purnawira Periode <span class="block md:inline text-yellow-600">{{ $periode->tahun }}</span>
+    <section class="relative bg-gradient-to-r from-rose-700 via-red-700 to-pink-600 text-white py-20">
+        <div class="container mx-auto px-6 text-center">
+            <h2 class="text-3xl md:text-4xl font-bold mb-4">
+                Purnawira Periode <span class="text-red-300">{{ $periode->tahun }}</span>
             </h2>
-            <p class="mt-1 text-gray-600">Mereka yang pernah menjadi bagian penting dari PMR Wira SMKN 2 Sukabumi</p>
+            <p class="text-lg max-w-2xl mx-auto">
+                Mereka yang pernah menjadi bagian penting dari PMR Wira SMKN 2 Sukabumi.
+                Bersama, kita menjaga tali persaudaraan dan kontribusi untuk generasi selanjutnya.
+            </p>
         </div>
+    </section>
+
+
+    <div class="max-w-[85rem] px-4 py-10 sm:px-6 lg:px-8 lg:py-14 mx-auto">
 
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            @foreach ($purnawiras as $item)
+            @forelse ($purnawiras as $item)
                 <div class="flex flex-col rounded-xl p-4 md:p-6 bg-white border border-gray-200">
                     <div class="flex items-center gap-x-4">
                         <img class="rounded-full size-20" src="{{ asset('storage/' . $item->image) }}" alt="Avatar">
@@ -60,7 +67,16 @@
                         </a>
                     </div>
                 </div>
-            @endforeach
+            @empty
+                <div
+                    class="col-span-full group flex flex-col bg-white border border-gray-200 shadow-2xs rounded-xl hover:shadow-md focus:outline-hidden focus:shadow-md transition">
+                    <div class="p-4 md:p-5">
+                        <div class="flex justify-center items-center gap-x-3">
+                            <h4>Data Alumni Belum Tersedia</h4>
+                        </div>
+                    </div>
+                </div>
+            @endforelse
         </div>
     </div>
 

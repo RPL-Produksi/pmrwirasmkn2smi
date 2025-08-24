@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\BidangController;
 use App\Http\Controllers\Guest\GuestAuthController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\InformasiController;
@@ -37,6 +38,12 @@ Route::controller(InformasiController::class)->group(function () {
 Route::controller(PrestasiController::class)->group(function () {
     Route::get('/prestasi', 'index')->name('prestasi.index');
     Route::get('/prestasi/{slug}', 'show')->name('prestasi.show');
+});
+
+Route::controller(BidangController::class)->group(function () {
+    Route::get('/bidang-bidang', 'index')->name('bidang.index');
+    Route::get('/bidang-bidang/{slug}', 'show')->name('bidang.show');
+    Route::get('/bidang-bidang/{slug}/dokumentasi', 'dokumentasi')->name('bidang.dokumentasi');
 });
 
 

@@ -43,7 +43,7 @@ class ManageBidangAnggota extends Page implements HasTable
     protected function getHeaderActions(): array
     {
         return [
-            CreateAction::make()
+            CreateAction::make('anggota')
                 ->label('New Anggota')
                 ->modalHeading('Create Anggota')
                 ->form([
@@ -65,7 +65,7 @@ class ManageBidangAnggota extends Page implements HasTable
                 ])->action(function (array $data) {
                     BidangAnggota::create(array_merge($data, ['bidang_id' => $this->record->id]));
                 }),
-            CreateAction::make()
+            CreateAction::make('attachment')
                 ->label('Dokumentasi')
                 ->icon('heroicon-o-document-plus')
                 ->modalHeading('Add Dokumentasi')
